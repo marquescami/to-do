@@ -10,13 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Column(nullable = false)
 	private String nome;
 
@@ -30,9 +30,8 @@ public class Usuario implements Serializable{
 		super();
 	}
 
-	public Usuario(Integer id, String nome, String email, String senha) {
+	public Usuario(String nome, String email, String senha) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -87,6 +86,5 @@ public class Usuario implements Serializable{
 		return Objects.equals(email, other.email) && Objects.equals(id, other.id) && Objects.equals(nome, other.nome)
 				&& Objects.equals(senha, other.senha);
 	}
-
 
 }

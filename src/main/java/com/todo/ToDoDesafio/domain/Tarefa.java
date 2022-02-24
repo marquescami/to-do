@@ -17,27 +17,26 @@ import com.todo.ToDoDesafio.domain.util.Prioridade;
 import com.todo.ToDoDesafio.domain.util.StatusTarefa;
 
 @Entity
-public class Tarefa implements Serializable{
+public class Tarefa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private Prioridade prioridadeTarefa;
-	
+
 	@Enumerated(EnumType.ORDINAL)
 	private StatusTarefa statusTarefa;
-	
+
 	@Column(nullable = false)
 	private String descricaoTarefa;
-	
+
 	@OneToOne
 	@JoinColumn(name = "usuario_id_fk")
 	private Usuario usuario;
-	
-	
+
 	public Tarefa() {
 		super();
 	}
@@ -49,26 +48,26 @@ public class Tarefa implements Serializable{
 		this.descricaoTarefa = descricaoTarefa;
 	}
 
-	public void excluiTarefa (String id) {
-		
+	public void excluiTarefa(String id) {
+
 	}
-	
+
 	public void alteraTarefa(String idTarefa, String descricaoTarefa, Prioridade prioridadeTarefa) {
 		this.descricaoTarefa = descricaoTarefa;
-		this.prioridadeTarefa =prioridadeTarefa;
+		this.prioridadeTarefa = prioridadeTarefa;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Tarefa [id=" + id + ", prioridadeTarefa=" + prioridadeTarefa + ", statusTarefa=" + statusTarefa
 				+ ", descricaoTarefa=" + descricaoTarefa + ", usuario=" + usuario + "]";
 	}
 
-	public void concluiTarefa (Integer id) {
+	public void concluiTarefa(Integer id) {
 		this.id = id;
 		this.statusTarefa = StatusTarefa.CONCLUIDA;
 	}
-	
+
 	public void verificaUsuario() {
 	}
 
@@ -130,7 +129,4 @@ public class Tarefa implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
-	
 }
